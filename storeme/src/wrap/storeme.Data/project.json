@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net46": {
+      "wrappedProject": "../../storeme.Data/storeme.Data.csproj",
+      "bin": {
+        "assembly": "../../storeme.Data/obj/{configuration}/storeme.Data.dll",
+        "pdb": "../../storeme.Data/obj/{configuration}/storeme.Data.pdb"
+      },
+      "dependencies": {
+        "MongoDB.Bson": "2.0.1",
+        "MongoDB.Driver": "2.0.1",
+        "MongoDB.Driver.Core": "2.0.1"
+      }
+    }
+  }
+}
