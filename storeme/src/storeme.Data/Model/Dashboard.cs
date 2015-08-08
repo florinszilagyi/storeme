@@ -1,4 +1,6 @@
-﻿using MongoDB.Bson;
+﻿using System;
+using System.Collections.Generic;
+using MongoDB.Bson;
 
 namespace storeme.Data.Model
 {
@@ -23,11 +25,11 @@ namespace storeme.Data.Model
         public string Salt { get; set; }
 
         /// <summary>
-        /// Gets or sets the file.
+        /// Gets or sets the root folder.
         /// </summary>
         /// <value>
-        /// The file.
+        /// The root folder.
         /// </value>
-        public DashboardFile File { get; set; }
+        public List<DashboardItem> DashboardItems { get; set; } = new List<DashboardItem>();
     }
 }

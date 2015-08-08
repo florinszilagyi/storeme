@@ -14,11 +14,6 @@ namespace storeme.Data.Encryption
         private AesKey key;
 
         /// <summary>
-        /// The dashboard
-        /// </summary>
-        private readonly Dashboard dashboard;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="DashboardDecryptor"/> class.
         /// </summary>
         /// <param name="encryptedDashboard">The encrypted dashboard.</param>
@@ -26,22 +21,56 @@ namespace storeme.Data.Encryption
         {
             var seed = Convert.FromBase64String(encryptedDashboard.Key);
             var salt = Convert.FromBase64String(encryptedDashboard.Salt);
-            this.dashboard = encryptedDashboard;
             this.key = EncryptionHelper.GenerateAesKeyFromSeed(seed, salt);
+        }
+
+        /// <summary>
+        /// Decrypts the item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <param name="withFileContent">if set to <c>true</c> [with file content].</param>
+        /// <returns></returns>
+        public DashboardItem DecryptItem(DashboardItem item, bool withFileContent = false)
+        {
+            var newItem = new DashboardItem();
+            newItem.Name = EncryptionHelper.SymmetricDecryptInBase64(item.Name, this.key);
+            newItem.Path = EncryptionHelper.SymmetricDecryptInBase64(item.Path, this.key);
+            newItem.AddedOn = item.AddedOn;
+            newItem.IsFolder = item.IsFolder;
+            newItem.Id = item.Id;
+
+            if (item.File != null && !item.IsFolder)
+            {
+                newItem.File = this.DecryptFile(item.File, withFileContent);
+            }
+
+            return newItem;
         }
 
         /// <summary>
         /// Decrypts the file.
         /// </summary>
+        /// <param name="file">The file.</param>
+        /// <param name="withContent">if set to <c>true</c> [with content].</param>
         /// <returns></returns>
-        public DashboardFile DecryptFile()
+        public DashboardFile DecryptFile(DashboardFile file, bool withContent = false)
         {
-            return new DashboardFile
-            {
-                Content = EncryptionHelper.SymmetricDecryptData(this.dashboard.File.Content, this.key),
-                Name = EncryptionHelper.SymmetricDecryptInBase64(this.dashboard.File.Name, this.key),
-                AddedOn = this.dashboard.File.AddedOn
-            };
+            var newFile = new DashboardFile();
+            newFile.Content = withContent ? EncryptionHelper.SymmetricDecryptData(file.Content, this.key) : new byte[0];
+            newFile.MediaType = EncryptionHelper.SymmetricDecryptInBase64(file.MediaType, this.key);
+            newFile.Size = file.Size;
+
+            return newFile;
+        }
+
+        /// <summary>
+        /// Decrypts the string.
+        /// </summary>
+        /// <param name="string">The string.</param>
+        /// <returns></returns>
+        public string DecryptString(string @string)
+        {
+            return EncryptionHelper.SymmetricDecryptInBase64(@string, this.key);
         }
     }
 }

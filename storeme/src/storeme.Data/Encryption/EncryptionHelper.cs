@@ -42,6 +42,33 @@ namespace storeme.Data.Encryption
         }
 
         /// <summary>
+        /// Computes the secure hash.
+        /// </summary>
+        /// <param name="password">The password.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// hashSalt
+        /// or
+        /// password
+        /// </exception>
+        public static string ComputeSecureHash(string password)
+        {
+            if (password == null)
+            {
+                throw new ArgumentNullException(nameof(password));
+            }
+
+            var passwordBytes = Encoding.UTF8.GetBytes(password);
+            var finalArray = new byte[passwordBytes.Length];
+            Array.Copy(passwordBytes, finalArray, passwordBytes.Length);
+
+            using (var shaAlgorithm = SHA256.Create())
+            {
+                return Convert.ToBase64String(shaAlgorithm.ComputeHash(finalArray));
+            }
+        }
+
+        /// <summary>
         /// Gets the first layer encryption key.
         /// </summary>
         /// <param name="allBytes">All bytes.</param>
@@ -81,11 +108,6 @@ namespace storeme.Data.Encryption
         /// <returns></returns>
         public static string SymmetricEncryptInBase64(string content, AesKey key)
         {
-            if (string.IsNullOrEmpty(content))
-            {
-                throw new ArgumentNullException("content");
-            }
-
             if (key == null)
             {
                 throw new ArgumentNullException("key");

@@ -1,0 +1,39 @@
+<div class="nav navbar-inverse">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="javascript: void(0);" style="color: white;">Secure storage</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-inverse-collapse" style="margin-left: 0;">
+        <ul class="nav navbar-nav">
+            <li class="accessCode" ng-mouseover="vm.onMouseOver();" ng-mouseleave="vm.onMouseLeave();" ng-click="vm.copyToClipboard()" title="Click to copy access code to clipboard">
+                <a style="color: white;" href=""  >
+                    <span ng-show="vm.mouseOver">{{vm.accessCode}}</span>
+                    <span ng-show="!vm.mouseOver">View access code</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="" style="color: white;" ng-click="vm.logout()">Logout</a></li>
+        </ul>
+    </div>
+</div>
+<div class="col-md-10 col-md-offset-1 shadow-z-2" style="padding: 0px; margin-top: 15px;">
+    <div file-manager access-code="vm.accessCode" ng-cloak></div>
+</div>
+<script type="text/ng-template" id="logout.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Are you sure you want to log out?</h3>
+    </div>
+    <div class="modal-body">
+        <p>If you did not save your access code this dashboard will be lost.</p>
+        <p>Click <a href="" ng-click="copy()">here</a> to copy the access code to your clipboard.</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">Yes</button>
+        <button class="btn btn-warning" ng-click="cancel()">No</button>
+    </div>
+</script>

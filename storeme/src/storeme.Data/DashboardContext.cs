@@ -1,6 +1,4 @@
 ﻿using MongoDB.Driver;
-using MongoDB.Driver.Linq;
-using System.Linq;
 using storeme.Data.Model;
 
 namespace storeme.Data

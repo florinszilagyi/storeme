@@ -53,12 +53,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DashboardContext.cs" />
+    <Compile Include="DashboardRepository.cs" />
     <Compile Include="Encryption\AesKey.cs" />
     <Compile Include="Encryption\DashboardDecryptor.cs" />
     <Compile Include="Encryption\DashboardEncryptor.cs" />
     <Compile Include="Encryption\EncryptionHelper.cs" />
     <Compile Include="Model\Dashboard.cs" />
-    <Compile Include="Model\EncryptedFile.cs" />
+    <Compile Include="Model\DashboardItem.cs" />
+    <Compile Include="Model\DashboardFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,23 @@
+<div data-ng-show="!item.inprocess">
+    <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#rename" data-ng-show="config.allowedActions.rename" data-ng-click="touch(item)" title="Rename">
+        <i class="glyphicon glyphicon-edit"></i>
+    </button>
+    <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#copy" data-ng-show="config.allowedActions.copy && !item.isFolder()" data-ng-click="touch(item)" title="Copy">
+        <i class="glyphicon glyphicon-log-out"></i>
+    </button>
+    <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#edit" data-ng-show="config.allowedActions.edit && item.isEditable()" data-ng-click="item.getContent(); touch(item)" title="Edit">
+        <i class="glyphicon glyphicon-pencil"></i>
+    </button>
+    <button class="btn btn-sm btn-default" data-ng-show="config.allowedActions.download && !item.isFolder()" data-ng-click="item.download()" title="Download">
+        <i class="glyphicon glyphicon-cloud-download"></i>
+    </button>
+    <button class="btn btn-sm btn-default" data-ng-show="config.allowedActions.preview && item.isImage()" data-ng-click="item.preview()" title="View item">
+        <i class="glyphicon glyphicon-picture"></i>
+    </button>
+    <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete" ng-show="config.allowedActions.remove" data-ng-click="touch(item)" title="Remove">
+        <i class="glyphicon glyphicon-trash"></i>
+    </button>
+</div>
+<div data-ng-show="item.inprocess">
+    <button class="btn btn-sm" style="visibility: hidden">&nbsp;</button><span class="label label-warning">Wait ...</span>
+</div>

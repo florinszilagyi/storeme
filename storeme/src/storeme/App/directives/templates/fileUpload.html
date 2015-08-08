@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-md-12">
+        <div ng-show="uploader.isHTML5">
+            <div class="well my-drop-zone" nv-file-over="" uploader="uploader" ng-click="" id="filedropzone">
+                Drag files here
+            </div>
+        </div>
+        <input ng-show="!uploader.isHTML5" type="file" nv-file-select="" uploader="uploader" multiple id="uploadfileinput" /><br />
+    </div>
+
+    <div class="col-md-12">
+        <table class="table table-responsive table-striped">
+            <thead>
+                <tr>
+                    <th width="50%">Name</th>
+                    <th ng-show="uploader.isHTML5">Size</th>
+                    <th ng-show="uploader.isHTML5">Progress</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in uploader.queue">
+                    <td><strong>{{ item.file.name }}</strong></td>
+                    <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                    <td ng-show="uploader.isHTML5">
+                        <div class="progress" style="margin-top: 7.5px;">
+                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <span><i class="mdi" ng-class="{'mdi-action-done mdi-material-green-600' : item.isSuccess, 'mdi-alert-error mdi-material-red-600' : item.isError}" title="{{item.message}}"></i></span>
+                    </td>
+                    <td nowrap>
+                        <a class="btn btn-fab-danger btn-sm" ng-click="item.remove()" ng-hide="completed" style="margin: 0">
+                            <i class="mdi-content-clear"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <div>
+                Progress:
+                <div class="progress" style="">
+                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                </div>
+            </div>
+            <a href="" class="btn btn-fab-success btn-flat" ng-click="startUpload();" ng-disabled="!uploader.getNotUploadedItems().length">
+                <span class="mdi-file-cloud-upload"></span> Upload all
+            </a>
+            <button type="button" class="btn btn-fab-warning btn-flat" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading || completed">
+                <span class="mdi-navigation-cancel"></span> Cancel all
+            </button>
+            <button type="button" class="btn btn-fab-danger btn-flat" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length || completed">
+                <span class="mdi-action-delete"></span> Remove all
+            </button>
+        </div>
+    </div>
+</div>

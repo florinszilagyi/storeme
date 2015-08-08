@@ -1,0 +1,19 @@
+<div class="col-lg-4 col-lg-offset-4" style="margin-top: 50px;">
+    <div class="jumbotron">
+        <h3>Decrypt dashboard</h3>
+        <div class="input-group">
+            <span class="input-group-btn">
+                <a class="btn btn-flat" title="Enter" ng-click="vm.openDashboard(accessCode)">
+                    <span class="lg mdi-action-lock-open"></span>
+                </a>
+            </span>
+            <input type="text" class="form-control input-lg" id="accessCode" placeholder="Access Code" ng-model="accessCode"/>
+        </div>
+        <span ng-show="vm.existingDashboard">You can access your current dashboard <a href="" ng-click="vm.openDashboard()">here</a>.</span>
+        <hr/>
+        <h5>
+            Alternatively, click <a class="" ng-click="vm.newDashboard()">here</a> to create a new dashboard.
+        </h5>
+    </div>
+    
+</div>
