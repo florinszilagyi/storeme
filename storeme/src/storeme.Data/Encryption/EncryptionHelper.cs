@@ -11,40 +11,6 @@ namespace storeme.Data.Encryption
         /// Computes the secure hash.
         /// </summary>
         /// <param name="password">The password.</param>
-        /// <param name="hashSalt">The hash salt.</param>
-        /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">
-        /// hashSalt
-        /// or
-        /// password
-        /// </exception>
-        public static byte[] ComputeSecureHash(string password, byte[] hashSalt)
-        {
-            if (hashSalt == null)
-            {
-                throw new ArgumentNullException(nameof(hashSalt));
-            }
-
-            if (password == null)
-            {
-                throw new ArgumentNullException(nameof(password));
-            }
-
-            var passwordBytes = Encoding.UTF8.GetBytes(password);
-            var finalArray = new byte[passwordBytes.Length + hashSalt.Length];
-            Array.Copy(passwordBytes, finalArray, passwordBytes.Length);
-            Array.Copy(hashSalt, 0, finalArray, passwordBytes.Length, hashSalt.Length);
-
-            using (var shaAlgorithm = SHA256.Create())
-            {
-                return shaAlgorithm.ComputeHash(finalArray);
-            }
-        }
-
-        /// <summary>
-        /// Computes the secure hash.
-        /// </summary>
-        /// <param name="password">The password.</param>
         /// <returns></returns>
         /// <exception cref="System.ArgumentNullException">
         /// hashSalt
@@ -58,13 +24,10 @@ namespace storeme.Data.Encryption
                 throw new ArgumentNullException(nameof(password));
             }
 
-            var passwordBytes = Encoding.UTF8.GetBytes(password);
-            var finalArray = new byte[passwordBytes.Length];
-            Array.Copy(passwordBytes, finalArray, passwordBytes.Length);
-
-            using (var shaAlgorithm = SHA256.Create())
+            var passBytes = Encoding.UTF8.GetBytes(password);
+            using (var hash = new Rfc2898DeriveBytes(passBytes, passBytes, (int)Math.Pow(2, 14)))
             {
-                return Convert.ToBase64String(shaAlgorithm.ComputeHash(finalArray));
+                return Convert.ToBase64String(hash.GetBytes(64));
             }
         }
 
@@ -84,8 +47,8 @@ namespace storeme.Data.Encryption
                 throw new ArgumentNullException(nameof(allBytes));
             }
 
-            var hash = new Rfc2898DeriveBytes(allBytes, salt, 1024);
-            return new AesKey(hash.GetBytes(32), hash.GetBytes(16));
+            var hash = new Rfc2898DeriveBytes(allBytes, salt, (int)Math.Pow(2, 8));
+            return new AesKey(hash.GetBytes(16), hash.GetBytes(16));
         }
 
         /// <summary>
@@ -94,7 +57,7 @@ namespace storeme.Data.Encryption
         /// <returns></returns>
         public static AesKey GenerateRandomAesKey()
         {
-            using (var aes = new AesCryptoServiceProvider())
+            using (var aes = new AesManaged())
             {
                 return new AesKey(aes.Key, aes.IV);
             }
@@ -153,15 +116,15 @@ namespace storeme.Data.Encryption
         {
             if (data == null)
             {
-                throw new ArgumentException("content");
+                throw new ArgumentException(nameof(data));
             }
 
             if (key == null)
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
-            using (var algorithm = new AesCryptoServiceProvider())
+            using (var algorithm = new AesManaged())
             {
                 return Transform(data, algorithm.CreateDecryptor(key.GetKey(), key.GetInitializationVector()));
             }
@@ -191,7 +154,7 @@ namespace storeme.Data.Encryption
                 throw new ArgumentNullException("key");
             }
 
-            using (var algorithm = new AesCryptoServiceProvider())
+            using (var algorithm = new AesManaged())
             {
                 return Transform(data, algorithm.CreateEncryptor(key.GetKey(), key.GetInitializationVector()));
             }

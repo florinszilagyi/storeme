@@ -52,6 +52,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\storeme.Data\storeme.Data.csproj">
+      <Project>{49f32688-a1d2-4dc3-aea8-02e8b9b02a9b}</Project>
+      <Name>storeme.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\storeme\storeme.csproj">
       <Project>{CA02F194-6514-419B-BF74-771AC04B4455}</Project>
       <Name>storeme</Name>
