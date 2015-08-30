@@ -1,5 +1,6 @@
 ﻿using System;
-using MongoDB.Bson;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace storeme.Data.Model
 {
@@ -11,7 +12,9 @@ namespace storeme.Data.Model
         /// <value>
         /// The identifier.
         /// </value>
-        public Guid Id { get; set; } = Guid.NewGuid();
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         
         /// <summary>
         /// Gets or sets the name.
@@ -35,7 +38,7 @@ namespace storeme.Data.Model
         /// <value>
         /// The added on.
         /// </value>
-        public DateTime AddedOn { get; set; } = DateTime.UtcNow.Date;
+        public DateTime AddedOn { get; set; } = DateTime.UtcNow;
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is folder.
@@ -45,11 +48,20 @@ namespace storeme.Data.Model
         public bool IsFolder { get; set; }
 
         /// <summary>
+        /// Gets or sets the file identifier.
+        /// </summary>
+        /// <value>
+        /// The file identifier.
+        /// </value>
+        public int? FileId { get; set; }
+
+        /// <summary>
         /// Gets or sets the file.
         /// </summary>
         /// <value>
         /// The file.
         /// </value>
-        public DashboardFile File { get; set; }
+        [ForeignKey("FileId")]
+        public virtual DashboardFile File { get; set; }
     }
 }

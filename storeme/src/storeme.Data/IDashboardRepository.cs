@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MongoDB.Driver;
 using storeme.Data.Encryption;
 using storeme.Data.Model;
 
 namespace storeme.Data
 {
-    public class SqlDashboardRepository : IDashboardRepository
+    public class MongoDashboardRepository : IDashboardRepository
     {
-        private DashboardContext context = new DashboardContext();
+        private readonly MongoDashboardContext context = new MongoDashboardContext();
 
         /// <summary>
         /// Inserts the specified dashboard.
@@ -19,9 +19,7 @@ namespace storeme.Data
         /// <returns></returns>
         public async Task Insert(Dashboard dashboard)
         {
-
-            context.Dashboards.Add(dashboard);
-            await context.SaveChangesAsync();
+            await context.Dashboards.InsertOneAsync(dashboard);
         }
 
         /// <summary>
@@ -31,8 +29,7 @@ namespace storeme.Data
         /// <returns></returns>
         public async Task Update(Dashboard dashboard)
         {
-            context.Dashboards.Attach(dashboard);
-            await context.SaveChangesAsync();
+            await context.Dashboards.ReplaceOneAsync(f => f.Id == dashboard.Id, dashboard);
         }
 
         /// <summary>
@@ -43,7 +40,7 @@ namespace storeme.Data
         public async Task<Dashboard> FindByAccessCode(string accessCode)
         {
             var key = EncryptionHelper.ComputeSecureHash(accessCode);
-            return await context.Dashboards.FirstOrDefaultAsync(f => f.Key == key);
+            return await context.Dashboards.Find(f => f.Key == key).FirstOrDefaultAsync();
         }
 
         /// <summary>
@@ -102,31 +99,81 @@ namespace storeme.Data
             await this.Update(dashboard);
         }
 
+        public Task ClearOldValues(int daysOld)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Tuple<string, int, int>>> GetDashboardsByDate()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+        }
+    }
+
+    public interface IDashboardRepository : IDisposable
+    {
+        /// <summary>
+        /// Inserts the specified dashboard.
+        /// </summary>
+        /// <param name="dashboard">The dashboard.</param>
+        /// <returns></returns>
+        Task Insert(Dashboard dashboard);
+
+        /// <summary>
+        /// Updates the specified dashboard.
+        /// </summary>
+        /// <param name="dashboard">The dashboard.</param>
+        /// <returns></returns>
+        Task Update(Dashboard dashboard);
+
+        /// <summary>
+        /// Finds the by access code.
+        /// </summary>
+        /// <param name="accessCode">The access code.</param>
+        /// <returns></returns>
+        Task<Dashboard> FindByAccessCode(string accessCode);
+
+        /// <summary>
+        /// Gets the items by path.
+        /// </summary>
+        /// <param name="accessCode">The access code.</param>
+        /// <param name="path">The path.</param>
+        /// <returns></returns>
+        Task<List<DashboardItem>> GetItemsByPath(string accessCode, string path);
+
+        /// <summary>
+        /// Gets the item.
+        /// </summary>
+        /// <param name="accessCode">The access code.</param>
+        /// <param name="path">The path.</param>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
+        Task<DashboardItem> GetItem(string accessCode, string path, string name);
+
+        /// <summary>
+        /// Deletes the item.
+        /// </summary>
+        /// <param name="accessCode">The access code.</param>
+        /// <param name="path">The path.</param>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
+        Task DeleteItem(string accessCode, string path, string name);
+
         /// <summary>
         /// Clears the old values.
         /// </summary>
         /// <param name="daysOld">The days old.</param>
         /// <returns></returns>
-        public async Task ClearOldValues(int daysOld)
-        {
-            var maxDate = DateTime.Now.AddDays(-1 * daysOld);
-            var toDelete = this.context.Dashboards.Where(d => d.Created <= maxDate);
-            this.context.Dashboards.RemoveRange(toDelete);
+        Task ClearOldValues(int daysOld);
 
-            await this.context.SaveChangesAsync();
-        }
-
-        public async Task<List<Tuple<string, int, int>>> GetDashboardsByDate()
-        {
-            var _30daysago = DateTime.Now.AddDays(-30);
-            var last30Days = context.Dashboards.Where(d => d.Created >= _30daysago);
-            var grouped = await last30Days.GroupBy(s => s.Created).ToListAsync();
-            return grouped.Select(d => new Tuple<string, int, int>(d.Key.ToShortDateString(), d.Count(), d.Sum(di => di.DashboardItems.Count))).ToList();
-        }
-
-        public void Dispose()
-        {
-            this.context.Dispose();
-        }
+        /// <summary>
+        /// Gets the dashboards by date.
+        /// </summary>
+        /// <returns></returns>
+        Task<List<Tuple<string, int, int>>> GetDashboardsByDate();
     }
 }

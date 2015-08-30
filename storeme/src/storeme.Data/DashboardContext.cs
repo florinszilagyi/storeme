@@ -1,11 +1,25 @@
-﻿using MongoDB.Driver;
-using storeme.Data.Model;
+﻿using storeme.Data.Model;
+using System.Data.Entity;
+using MongoDB.Driver;
 
 namespace storeme.Data
 {
-    public class DashboardContext
+    public class DashboardContext : DbContext
     {
-        public DashboardContext()
+        public DashboardContext() : base("DefaultConnection")
+        {
+        }
+
+        public DbSet<Dashboard> Dashboards { get; set; }    
+
+        public DbSet<DashboardItem> DashboardItems { get; set; }
+
+        public DbSet<DashboardFile> Files { get; set; }
+    }
+
+    public class MongoDashboardContext
+    {
+        public MongoDashboardContext()
         {
             var settings = new MongoClientSettings();
             settings.Server = new MongoServerAddress("127.0.0.1");

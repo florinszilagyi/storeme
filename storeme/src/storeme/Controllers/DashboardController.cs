@@ -14,7 +14,7 @@ namespace storeme.Controllers
 {
     public class DashboardController : Controller
     {
-        private readonly DashboardRepository repository = new DashboardRepository();
+        private readonly IDashboardRepository repository = EntityResolver.ResolveRepository();
 
         private async Task<Dashboard> GetDashboard(string passCode)
         {
@@ -35,15 +35,20 @@ namespace storeme.Controllers
         [HttpPost]
         public async Task<JsonResult> Upload(HttpPostedFileBase file)
         {
+            var filename = file.FileName;
+            if (file.ContentLength > 5*1024*1024) // 5MB
+            {
+                return new FormattedJsonResult(new {result = "error", message = "Cannot upload files larger than 5 MB"});
+            }
+
+            var buffer = new byte[file.ContentLength];
+            file.InputStream.Read(buffer, 0, file.ContentLength);
+
             var dashboard = await GetDashboard(Request.Headers["accessCode"]);
             string uploadPath = Request.Headers["uploadPath"];
             var encryptor = new DashboardEncryptor(dashboard);
 
-            var filename = file.FileName;
-            var buffer = new byte[file.ContentLength];
-            file.InputStream.Read(buffer, 0, file.ContentLength);
-
-            var encryptedFile = encryptor.CreateEncryptedItem(filename, uploadPath, buffer, file.ContentType);
+            var encryptedFile = encryptor.Encrypt(filename, uploadPath, buffer, file.ContentType);
 
             if (dashboard.DashboardItems.Any(f => f.Path == encryptedFile.Path && f.Name == encryptedFile.Name))
             {
@@ -145,7 +150,7 @@ namespace storeme.Controllers
             var dashboard = await repository.FindByAccessCode(accessCode);
             var encryptor = new DashboardEncryptor(dashboard);
 
-            dashboard.DashboardItems.Add(encryptor.CreateEncryptedItem(name, path));
+            dashboard.DashboardItems.Add(encryptor.Encrypt(name, path));
             await this.repository.Update(dashboard);
 
             return new FormattedJsonResult(new { Result = "success" });
@@ -164,6 +169,24 @@ namespace storeme.Controllers
             await this.repository.DeleteItem(accessCode, path, name);
 
             return new FormattedJsonResult(new { Result = "success" });
+        }
+
+        /// <summary>
+        /// Clears this instance.
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<FormattedJsonResult> Clear()
+        {
+            await this.repository.ClearOldValues(AppSettings.DaysToKeep);
+
+            return new FormattedJsonResult(new { Result = "success" });
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            this.repository.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

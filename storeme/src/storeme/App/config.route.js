@@ -17,6 +17,12 @@
                 templateUrl: 'App/Controllers/dashboard.html',
                 controller: 'dashboardController',
                 controllerAs: 'vm'
+            })
+            .state('administration', {
+                url: '/admin',
+                templateUrl: 'App/Controllers/admin.html',
+                controller: 'adminController',
+                controllerAs: 'vm'
             });
     });
 

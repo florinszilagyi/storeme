@@ -4,73 +4,6 @@
         <name>Microsoft.ApplicationInsights</name>
     </assembly>
     <members>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.BuildInfoConfigComponentVersionContextInitializer">
-            <summary>
-            A telemetry context initializer that will set component context version on the base of BuildInfo.config information.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.IContextInitializer">
-            <summary>
-            Represents an object that implements supporting logic for <see cref="T:Microsoft.ApplicationInsights.DataContracts.TelemetryContext"/>.
-            </summary>
-            <remarks>
-            One type of objects that support <see cref="T:Microsoft.ApplicationInsights.DataContracts.TelemetryContext"/> is a telemetry source.
-            A telemetry source can supply initial property values for a <see cref="T:Microsoft.ApplicationInsights.DataContracts.TelemetryContext"/> object 
-            during its construction or generate <see cref="T:Microsoft.ApplicationInsights.Channel.ITelemetry"/> objects during its lifetime.
-            </remarks>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.IContextInitializer.Initialize(Microsoft.ApplicationInsights.DataContracts.TelemetryContext)">
-            <summary>
-            Initializes the given <see cref="T:Microsoft.ApplicationInsights.DataContracts.TelemetryContext"/>.
-            </summary>
-        </member>
-        <member name="F:Microsoft.ApplicationInsights.Extensibility.BuildInfoConfigComponentVersionContextInitializer.version">
-            <summary>
-            The version for this component.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.BuildInfoConfigComponentVersionContextInitializer.Initialize(Microsoft.ApplicationInsights.DataContracts.TelemetryContext)">
-            <summary>
-            Initializes a component context version on the base of BuildInfo.config information.
-            </summary>
-            <param name="context">The telemetry context to initialize.</param>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.BuildInfoConfigComponentVersionContextInitializer.LoadBuildInfoConfig">
-            <summary>
-            Loads BuildInfo.config and returns XElement.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.BuildInfoConfigComponentVersionContextInitializer.GetVersion">
-            <summary>
-            Gets the version for the current application. If the version cannot be found, we will return the passed in default.
-            </summary>
-            <returns>The extracted data.</returns>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.DataPoint">
-            <summary>
-            Partial class to add the EventData attribute and any additional customizations to the generated type.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.MetricData">
-            <summary>
-            Partial class to add the EventData attribute and any additional customizations to the generated type.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.RemoteDependencyData">
-            <summary>
-            Partial class to add the EventData attribute and any additional customizations to the generated type.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.RequestData">
-            <summary>
-            Partial class to add the EventData attribute and any additional customizations to the generated type.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.StackFrame">
-            <summary>
-            Partial class to add the EventData attribute and any additional customizations to the generated type.
-            </summary>
-        </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.ExceptionDetails">
             <summary>
             Additional implementation for ExceptionDetails.
@@ -79,36 +12,6 @@
         <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.External.ExceptionDetails.CreateWithoutStackInfo(System.Exception,Microsoft.ApplicationInsights.Extensibility.Implementation.External.ExceptionDetails)">
             <summary>
             Creates a new instance of ExceptionDetails from a System.Exception and a parent ExceptionDetails.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.ExceptionData">
-            <summary>
-            Partial class to add the EventData attribute and any additional customizations to the generated type.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.MessageData">
-            <summary>
-            Partial class to add the EventData attribute and any additional customizations to the generated type.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.EventData">
-            <summary>
-            Partial class to add the EventData attribute and any additional customizations to the generated type.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.PageViewData">
-            <summary>
-            Partial class to add the EventData attribute and any additional customizations to the generated type.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.PageViewPerfData">
-            <summary>
-            Partial class to add the EventData attribute and any additional customizations to the generated type.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.AjaxCallData">
-            <summary>
-            Partial class to add the EventData attribute and any additional customizations to the generated type.
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.ComponentContextData">
@@ -232,11 +135,6 @@
             Gets or sets the application-defined operation NAME.
             </summary>
         </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.PerformanceCounterData">
-            <summary>
-            Partial class to add the EventData attribute and any additional customizations to the generated type.
-            </summary>
-        </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.SessionContextData">
             <summary>
             Encapsulates information about a user session.
@@ -255,11 +153,6 @@
         <member name="P:Microsoft.ApplicationInsights.Extensibility.Implementation.External.SessionContextData.IsNewSession">
             <summary>
             Gets or sets the IsNewSession Session.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.SessionStateData">
-            <summary>
-            Partial class to add the EventData attribute and any additional customizations to the generated type.
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.Tags">
@@ -308,285 +201,6 @@
             Acquisition date is automatically supplied in default Application Insights configuration.
             </remarks>
         </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.Platform.PlatformApplicationLifecycle">
-            <summary>
-            CLR-specific logic of <see cref="T:Microsoft.ApplicationInsights.Extensibility.IApplicationLifecycle"/> provider.
-            </summary>
-            <summary>
-            Common logic of <see cref="T:Microsoft.ApplicationInsights.Extensibility.IApplicationLifecycle"/> provider shared by all platforms.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.IApplicationLifecycle">
-            <summary>
-            Encapsulates application lifecycle events.
-            </summary>
-        </member>
-        <member name="E:Microsoft.ApplicationInsights.Extensibility.IApplicationLifecycle.Started">
-            <summary>
-            Occurs when a new instance of the application is started or an existing instance is activated.
-            </summary>
-        </member>
-        <member name="E:Microsoft.ApplicationInsights.Extensibility.IApplicationLifecycle.Stopping">
-            <summary>
-            Occurs when the application is suspending or closing.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.ComponentContextReader">
-            <summary>
-            The reader is platform specific and applies to .NET applications only.
-            </summary>
-            <summary>
-            The reader is platform specific and will contain different implementations for reading specific data based on the platform its running on.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.IComponentContextReader">
-            <summary>
-            The component context reader interface used while reading component related information in a platform specific way.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.IComponentContextReader.Initialize">
-            <summary>
-            Initializes the current reader with respect to its environment.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.IComponentContextReader.GetVersion">
-            <summary>
-            Gets the version for the current application. If the version cannot be found, we will return the passed in default.
-            </summary>
-            <returns>The extracted data.</returns>
-        </member>
-        <member name="F:Microsoft.ApplicationInsights.Extensibility.ComponentContextReader.UnknownComponentVersion">
-            <summary>
-            The default application version we will be returning if no application version is found.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.ComponentContextReader.Initialize">
-            <summary>
-            Initializes the current reader with respect to its environment.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.ComponentContextReader.GetVersion">
-            <summary>
-            Gets the version for the current application. If the version cannot be found, we will return the passed in default.
-            </summary>
-            <returns>The extracted data.</returns>
-        </member>
-        <member name="F:Microsoft.ApplicationInsights.Extensibility.ComponentContextReader.instance">
-            <summary>
-            The singleton instance for our reader.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.ComponentContextReader.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Extensibility.ComponentContextReader"/> class.
-            </summary>
-        </member>
-        <member name="P:Microsoft.ApplicationInsights.Extensibility.ComponentContextReader.Instance">
-            <summary>
-            Gets or sets the singleton instance for our application context reader.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader">
-            <summary>
-            The reader is platform specific and applies to .NET applications only.
-            </summary>
-            <summary>
-            The reader is platform specific and will contain different implementations for reading specific data based on the platform its running on.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.IDeviceContextReader">
-            <summary>
-            The device context reader interface used while reading device related information in a platform specific way.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.IDeviceContextReader.Initialize">
-            <summary>
-            Initializes the current reader with respect to its environment.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.IDeviceContextReader.GetDeviceType">
-            <summary>
-            Gets the type of the device.
-            </summary>
-            <returns>The type for this device as a hard-coded string.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.IDeviceContextReader.GetDeviceUniqueId">
-            <summary>
-            Gets the device unique identifier.
-            </summary>
-            <returns>The discovered device identifier.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.IDeviceContextReader.GetOperatingSystemAsync">
-            <summary>
-            Gets the operating system version.
-            </summary>
-            <returns>The discovered operating system.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.IDeviceContextReader.GetOemName">
-            <summary>
-            Gets the device OEM.
-            </summary>
-            <returns>The discovered OEM.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.IDeviceContextReader.GetDeviceModel">
-            <summary>
-            Gets the device model.
-            </summary>
-            <returns>The discovered device model.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.IDeviceContextReader.GetNetworkType">
-            <summary>
-            Gets the network type.
-            </summary>
-            <returns>The discovered network type.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.IDeviceContextReader.GetScreenResolutionAsync">
-            <summary>
-            Gets the screen resolution.
-            </summary>
-            <returns>The discovered screen resolution.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.IDeviceContextReader.GetHostSystemLocale">
-            <summary>
-            Gets the host system locale.
-            </summary>
-            <returns>The discovered locale.</returns>
-        </member>
-        <member name="P:Microsoft.ApplicationInsights.Extensibility.IDeviceContextReader.FallbackContext">
-            <summary>
-            Gets the fallback device context.
-            </summary>
-        </member>
-        <member name="F:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.ContextPersistentStorageFileName">
-            <summary>
-            The file name used when storing persistent context.
-            </summary>
-        </member>
-        <member name="F:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.deviceId">
-            <summary>
-            The device identifier.
-            </summary>
-        </member>
-        <member name="F:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.operatingSystem">
-            <summary>
-            The operating system.
-            </summary>
-        </member>
-        <member name="F:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.deviceManufacturer">
-            <summary>
-            The device manufacturer.
-            </summary>
-        </member>
-        <member name="F:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.deviceName">
-            <summary>
-            The device name.
-            </summary>
-        </member>
-        <member name="F:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.networkType">
-            <summary>
-            The network type.
-            </summary>
-        </member>
-        <member name="F:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.cachedContext">
-            <summary>
-            The cached fallback context.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.Initialize">
-            <summary>
-            Initializes the current instance with respect to the platform specific implementation.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.GetDeviceType">
-            <summary>
-            Gets the type of the device.
-            </summary>
-            <returns>The type for this device as a hard-coded string.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.GetDeviceUniqueId">
-            <summary>
-            Gets the device unique ID, or uses the fallback if none is available due to application configuration.
-            </summary>
-            <returns>
-            The discovered device identifier.
-            </returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.GetOperatingSystemAsync">
-            <summary>
-            Gets the operating system.
-            </summary>
-            <returns>The discovered operating system.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.GetOemName">
-            <summary>
-            Gets the device OEM.
-            </summary>
-            <returns>The discovered OEM.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.GetDeviceModel">
-            <summary>
-            Gets the device model.
-            </summary>
-            <returns>The discovered device model.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.GetNetworkType">
-            <summary>
-            Gets the network type.
-            </summary>
-            <returns>The discovered network type.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.GetScreenResolutionAsync">
-            <summary>
-            Gets the screen resolution.
-            </summary>
-            <returns>The discovered screen resolution.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.ReadSerializedContext">
-            <summary>
-            Reads the serialized context from persistent storage, or will create a new context if none exits.
-            </summary>
-            <returns>The fallback context we will be using.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.RunWmiQuery(System.String,System.String,System.String)">
-            <summary>
-            Runs a single WMI query for a property.
-            </summary>
-            <param name="table">The table.</param>
-            <param name="property">The property.</param>
-            <param name="defaultValue">The default value of the property if WMI fails.</param>
-            <returns>The value if found, Unknown otherwise.</returns>
-        </member>
-        <member name="F:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.instance">
-            <summary>
-            The singleton instance for our reader.
-            </summary>
-        </member>
-        <member name="F:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.syncRoot">
-            <summary>
-            The sync root used in synchronizing access to persistent storage.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader"/> class.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.GetHostSystemLocale">
-            <summary>
-            Gets the host system locale.
-            </summary>
-            <returns>The discovered locale.</returns>
-        </member>
-        <member name="P:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.FallbackContext">
-            <summary>
-            Gets the fallback device context.
-            </summary>
-        </member>
-        <member name="P:Microsoft.ApplicationInsights.Extensibility.DeviceContextReader.Instance">
-            <summary>
-            Gets or sets the singleton instance for our application context reader.
-            </summary>
-        </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.Platform.PlatformImplementation">
             <summary>
             The .NET 4.0 and 4.5 implementation of the <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.IPlatform"/> interface.
@@ -630,6 +244,23 @@
             Returns the platform specific Debugger writer to the VS output console.
             </summary>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryConfigurationFactory.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryConfigurationFactory"/> class.
+            </summary>
+            <remarks>
+            This constructor is protected because <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryConfigurationFactory"/> is only meant to be instantiated 
+            by the <see cref="P:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryConfigurationFactory.Instance"/> property or by tests.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryConfigurationFactory.Instance">
+            <summary>
+            Gets or sets the default <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryConfigurationFactory"/> instance used by <see cref="T:Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration"/>.
+            </summary>
+            <remarks>
+            This property is a test isolation "pinch point" that allows us to test <see cref="T:Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration"/> without using reflection.
+            </remarks>
+        </member>
         <member name="T:Microsoft.ApplicationInsights.Utils">
             <summary>
             Various utilities.
@@ -651,13 +282,6 @@
             <param name="isCaseSensitive">If set to <c>false</c> the function will produce the same value for any casing of input.</param>
             <returns>The hashed value.</returns>
         </member>
-        <member name="M:Microsoft.ApplicationInsights.Utils.ReadSerializedContext``1(System.String)">
-            <summary>
-            Reads the serialized context from persistent storage, or will create a new context if none exits.
-            </summary>
-            <param name="fileName">The file to read from storage.</param>
-            <returns>The fallback context we will be using.</returns>
-        </member>
         <member name="M:Microsoft.ApplicationInsights.Utils.PopulateRequiredStringValue(System.String,System.String,System.String)">
             <summary>
             Validates the string and if null or empty populates it with '$parameterName is a required field for $telemetryType' value.
@@ -671,7 +295,7 @@
         <member name="T:Microsoft.ApplicationInsights.Channel.InMemoryChannel">
             <summary>
             Represents a communication channel for sending telemetry to Application Insights via HTTPS. There will be a buffer that will not be persisted, to enforce the 
-            queued telemetry items to be send, <see cref="M:Microsoft.ApplicationInsights.Channel.ITelemetryChannel.Flush"/> should be called.
+            queued telemetry items to be sent, <see cref="M:Microsoft.ApplicationInsights.Channel.ITelemetryChannel.Flush"/> should be called.    
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Channel.ITelemetryChannel">
@@ -704,6 +328,13 @@
             Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Channel.InMemoryChannel"/> class.
             </summary>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.Channel.InMemoryChannel.#ctor(Microsoft.ApplicationInsights.Channel.TelemetryBuffer,Microsoft.ApplicationInsights.Channel.InMemoryTransmitter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Channel.InMemoryChannel"/> class. Used in unit tests for constructor injection.  
+            </summary>
+            <param name="telemetryBuffer">The telemetry buffer that will be used to enqueue new events.</param>
+            <param name="transmitter">The in memory transmitter that will send the events queued in the buffer.</param>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.Channel.InMemoryChannel.Send(Microsoft.ApplicationInsights.Channel.ITelemetry)">
             <summary>
             Sends an instance of ITelemetry through the channel.
@@ -724,6 +355,12 @@
             Gets or sets a value indicating whether developer mode of telemetry transmission is enabled.
             </summary>
         </member>
+        <member name="P:Microsoft.ApplicationInsights.Channel.InMemoryChannel.SendingInterval">
+            <summary>
+            Gets or sets the sending interval. Once the interval expires, <see cref="T:Microsoft.ApplicationInsights.Channel.InMemoryChannel"/> 
+            serializes the accumulated telemetry items for transmission and sends it over the wire.
+            </summary>    
+        </member>
         <member name="P:Microsoft.ApplicationInsights.Channel.InMemoryChannel.EndpointAddress">
             <summary>
             Gets or sets the HTTP address where the telemetry is sent.
@@ -743,7 +380,18 @@
         </member>
         <member name="T:Microsoft.ApplicationInsights.Channel.InMemoryTransmitter">
             <summary>
-            A transmitter that will immediately send telemetry over HTTP.
+            A transmitter that will immediately send telemetry over HTTP. 
+            Telemetry items are being sent when Flush is called, or when the buffer is full (An OnFull "event" is raised) or every 30 seconds. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.ApplicationInsights.Channel.InMemoryTransmitter.sendingLockObj">
+            <summary>
+            A lock object to serialize the sending calls from Flush, OnFull event and the Runner.  
+            </summary>
+        </member>
+        <member name="F:Microsoft.ApplicationInsights.Channel.InMemoryTransmitter.disposeCount">
+            <summary>
+            The number of times this object was disposed.
             </summary>
         </member>
         <member name="M:Microsoft.ApplicationInsights.Channel.InMemoryTransmitter.Dispose">
@@ -758,7 +406,7 @@
         </member>
         <member name="M:Microsoft.ApplicationInsights.Channel.InMemoryTransmitter.Runner">
             <summary>
-            Flushes the in-memory buffer and sends the telemetry items in <see cref="F:Microsoft.ApplicationInsights.Channel.InMemoryTransmitter.defaultFlushDelay"/> intervals or when 
+            Flushes the in-memory buffer and sends the telemetry items in <see cref="F:Microsoft.ApplicationInsights.Channel.InMemoryTransmitter.sendingInterval"/> intervals or when 
             <see cref="F:Microsoft.ApplicationInsights.Channel.InMemoryTransmitter.startRunnerEvent"/> is set.
             </summary>
         </member>
@@ -811,57 +459,6 @@
             From <a href="https://microsoft.sharepoint.com/teams/CommonSchema/Shared%20Documents/Schema%20Specs/Common%20Schema%202%20-%20Language%20Specification.docx"/>.
             </remarks>
         </member>
-        <member name="T:Microsoft.ApplicationInsights.Channel.JsonSerializer">
-            <summary>
-            Serializes and compress the telemetry items into a JSON string. Compression will be done using GZIP, for Windows Phone 8 compression will be disabled because there
-            is API support for it. 
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Channel.JsonSerializer.Serialize(System.Collections.Generic.IEnumerable{Microsoft.ApplicationInsights.Channel.ITelemetry},System.Boolean)">
-            <summary>
-            Serializes and compress the telemetry items into a JSON string. Each JSON object is separated by a new line. 
-            </summary>
-            <param name="telemetryItems">The list of telemetry items to serialize.</param>
-            <param name="compress">Should serialization also perform compression.</param>
-            <returns>The compressed and serialized telemetry items.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Channel.JsonSerializer.Serialize(Microsoft.ApplicationInsights.Channel.ITelemetry,System.Boolean)">
-            <summary>
-             Serialize and compress a telemetry item. 
-            </summary>
-            <param name="telemetryItem">A telemetry item.</param>
-            <param name="compress">Should serialization also perform compression.</param>
-            <returns>The compressed and serialized telemetry item.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Channel.JsonSerializer.SerializeAsString(System.Collections.Generic.IEnumerable{Microsoft.ApplicationInsights.Channel.ITelemetry})">
-            <summary>
-            Serializes <paramref name="telemetryItems"/> into a JSON string. Each JSON object is separated by a new line. 
-            </summary>
-            <param name="telemetryItems">The list of telemetry items to serialize.</param>
-            <returns>A JSON string of all the serialized items.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Channel.JsonSerializer.SerializeAsString(Microsoft.ApplicationInsights.Channel.ITelemetry)">
-            <summary>
-            Serializes a <paramref name="telemetry"/> into a JSON string. 
-            </summary>
-            <param name="telemetry">The telemetry to serialize.</param>
-            <returns>A JSON string of the serialized telemetry.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Channel.JsonSerializer.CreateCompressedStream(System.IO.Stream)">
-            <summary>
-            Creates a GZIP compression stream that wraps <paramref name="stream"/>. For windows phone 8.0 it returns <paramref name="stream"/>. 
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Channel.JsonSerializer.SeializeToStream(System.Collections.Generic.IEnumerable{Microsoft.ApplicationInsights.Channel.ITelemetry},System.IO.TextWriter)">
-            <summary>
-            Serializes <paramref name="telemetryItems"/> and write the response to <paramref name="streamWriter"/>.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Channel.JsonSerializer.SerializePerformanceCounter(Microsoft.ApplicationInsights.DataContracts.PerformanceCounterTelemetry,Microsoft.ApplicationInsights.Extensibility.Implementation.JsonWriter)">
-            <summary>
-            Serializes this object in JSON format.
-            </summary>
-        </member>
         <member name="T:Microsoft.ApplicationInsights.Channel.TelemetryBuffer">
             <summary>
             Accumulates <see cref="T:Microsoft.ApplicationInsights.Channel.ITelemetry"/> items for efficient transmission.
@@ -877,6 +474,64 @@
             Gets or sets the maximum number of telemetry items that can be buffered before transmission.
             </summary>
             <exception cref="T:System.ArgumentOutOfRangeException">The value is zero or less.</exception>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Channel.Transmission">
+            <summary>
+            Implements an asynchronous transmission of data to an HTTP POST endpoint.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Channel.Transmission.#ctor(System.Uri,System.Byte[],System.String,System.String,System.TimeSpan)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Channel.Transmission"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Channel.Transmission.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Channel.Transmission"/> class. This overload is for Test purposes. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Channel.Transmission.SendAsync">
+            <summary>
+            Executes the request that the current transmission represents.
+            </summary>
+            <returns>The task to await.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Channel.Transmission.CreateRequest(System.Uri)">
+            <summary>
+            Creates a post web request.  
+            </summary>
+            <param name="address">The Address in the web request.</param>
+            <returns>A web request pointing to the <c>Address</c>.</returns>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Channel.Transmission.EndpointAddress">
+            <summary>
+            Gets the Address of the endpoint to which transmission will be sent.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Channel.Transmission.Content">
+            <summary>
+            Gets the content of the transmission.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Channel.Transmission.ContentType">
+            <summary>
+            Gets the content's type of the transmission.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Channel.Transmission.ContentEncoding">
+            <summary>
+            Gets the encoding method of the transmission.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Channel.Transmission.Timeout">
+            <summary>
+            Gets a timeout value for the transmission.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Channel.Transmission.Id">
+            <summary>
+            Gets an id of the transmission.
+            </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.DataContracts.EventTelemetry">
             <summary>
@@ -1289,6 +944,20 @@
             The class that represents information about performance counters.
             </summary>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.PerformanceCounterTelemetry.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.DataContracts.PerformanceCounterTelemetry"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.PerformanceCounterTelemetry.#ctor(System.String,System.String,System.String,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.DataContracts.PerformanceCounterTelemetry"/> class.
+            </summary>
+            <param name="categoryName">Category name.</param>
+            <param name="counterName">Performance counter name.</param>
+            <param name="instanceName">Instance name.</param>
+            <param name="value">Performance counter value.</param>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.DataContracts.PerformanceCounterTelemetry.Microsoft#ApplicationInsights#Channel#ITelemetry#Sanitize">
             <summary>
             Sanitizes the properties based on constraints.
@@ -1334,74 +1003,90 @@
             Gets a dictionary of application-defined property names and values providing additional information about this exception.
             </summary>
         </member>
-        <member name="T:Microsoft.ApplicationInsights.DataContracts.RemoteDependencyTelemetry">
+        <member name="T:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry">
             <summary>
-            The class that represents information about collected RDD.
+            The class that represents information about the collected dependency.
             </summary>
         </member>
-        <member name="M:Microsoft.ApplicationInsights.DataContracts.RemoteDependencyTelemetry.Microsoft#ApplicationInsights#Channel#ITelemetry#Sanitize">
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.#ctor(System.String,System.String,System.DateTimeOffset,System.TimeSpan,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry"/> class with the given <paramref name="dependencyName"/>, <paramref name="commandName"/>, 
+            <paramref name="startTime"/>, <paramref name="duration"/> and <paramref name="success"/> property values.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.Microsoft#ApplicationInsights#Channel#ITelemetry#Sanitize">
             <summary>
             Sanitizes the properties based on constraints.
             </summary>
         </member>
-        <member name="P:Microsoft.ApplicationInsights.DataContracts.RemoteDependencyTelemetry.Timestamp">
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.Timestamp">
             <summary>
             Gets or sets date and time when telemetry was recorded.
             </summary>
         </member>
-        <member name="P:Microsoft.ApplicationInsights.DataContracts.RemoteDependencyTelemetry.Sequence">
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.Sequence">
             <summary>
             Gets or sets the value that defines absolute order of the telemetry item.
             </summary>
         </member>
-        <member name="P:Microsoft.ApplicationInsights.DataContracts.RemoteDependencyTelemetry.Context">
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.Context">
             <summary>
             Gets the context associated with the current telemetry item.
             </summary>
         </member>
-        <member name="P:Microsoft.ApplicationInsights.DataContracts.RemoteDependencyTelemetry.Name">
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.Name">
             <summary>
             Gets or sets resource name.
             </summary>
         </member>
-        <member name="P:Microsoft.ApplicationInsights.DataContracts.RemoteDependencyTelemetry.CommandName">
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.CommandName">
             <summary>
             Gets or sets text of SQL command or empty it not applicable.
             </summary>
         </member>
-        <member name="P:Microsoft.ApplicationInsights.DataContracts.RemoteDependencyTelemetry.DependencyKind">
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.DependencyTypeName">
             <summary>
-            Gets or sets the dependency kind, like SQL, HTTP, Azure, etc.
+            Gets or sets the dependency type name.
             </summary>
         </member>
-        <member name="P:Microsoft.ApplicationInsights.DataContracts.RemoteDependencyTelemetry.Value">
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.StartTime">
             <summary>
-            Gets or sets request duration.
+            Gets or sets the date and time when dependency was called by the application.
             </summary>
         </member>
-        <member name="P:Microsoft.ApplicationInsights.DataContracts.RemoteDependencyTelemetry.Count">
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.Duration">
+            <summary>
+            Gets or sets dependency call duration.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.Count">
             <summary>
             Gets or sets request count.
             </summary>
         </member>
-        <member name="P:Microsoft.ApplicationInsights.DataContracts.RemoteDependencyTelemetry.Success">
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.Success">
             <summary>
             Gets or sets a value indicating whether the dependency call was successful or not.
             </summary>
         </member>
-        <member name="P:Microsoft.ApplicationInsights.DataContracts.RemoteDependencyTelemetry.Async">
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.Async">
             <summary>
             Gets or sets a value indicating whether the dependency call was made asynchronously or not.
             </summary>
         </member>
-        <member name="P:Microsoft.ApplicationInsights.DataContracts.RemoteDependencyTelemetry.DependencySource">
-            <summary>
-            Gets or sets a value identifying the source of RDD.
-            </summary>
-        </member>
-        <member name="P:Microsoft.ApplicationInsights.DataContracts.RemoteDependencyTelemetry.Properties">
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.Properties">
             <summary>
             Gets a dictionary of application-defined property names and values providing additional information about this remote dependency.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.DependencyKind">
+            <summary>
+            Gets or sets the dependency kind, like SQL, HTTP, Azure, etc.
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.DataContracts.RequestTelemetry">
@@ -1422,7 +1107,7 @@
         <member name="M:Microsoft.ApplicationInsights.DataContracts.RequestTelemetry.#ctor(System.String,System.DateTimeOffset,System.TimeSpan,System.String,System.Boolean)">
             <summary>
             Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.DataContracts.RequestTelemetry"/> class with the given <paramref name="name"/>, 
-            <paramref name="timestamp"/>, <paramref name="duration"/>, <paramref name="responseCode"/> and <paramref name="success"/> property values.
+            <paramref name="startTime"/>, <paramref name="duration"/>, <paramref name="responseCode"/> and <paramref name="success"/> property values.
             </summary>
         </member>
         <member name="M:Microsoft.ApplicationInsights.DataContracts.RequestTelemetry.Microsoft#ApplicationInsights#Channel#ITelemetry#Sanitize">
@@ -1431,6 +1116,11 @@
             </summary>
         </member>
         <member name="P:Microsoft.ApplicationInsights.DataContracts.RequestTelemetry.Timestamp">
+            <summary>
+            Gets or sets date and time when telemetry was recorded.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.RequestTelemetry.StartTime">
             <summary>
             Gets or sets the date and time when request was processed by the application.
             </summary>
@@ -1634,6 +1324,11 @@
             Gets the object describing a location tracked by this <see cref="T:Microsoft.ApplicationInsights.DataContracts.TelemetryContext"/>.
             </summary>
         </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.TelemetryContext.Properties">
+            <summary>
+            Gets a dictionary of application-defined property values.
+            </summary>
+        </member>
         <member name="P:Microsoft.ApplicationInsights.DataContracts.TelemetryContext.Tags">
             <summary>
             Gets a dictionary of context tags.
@@ -1695,128 +1390,19 @@
             Gets a dictionary of application-defined property names and values providing additional information about this trace.
             </summary>
         </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.ApplicationLifecycle">
+        <member name="T:Microsoft.ApplicationInsights.Extensibility.IContextInitializer">
             <summary>
-            This class represents a platform agnostic management interface to application lifecycle events.
+            Represents an object that implements supporting logic for <see cref="T:Microsoft.ApplicationInsights.DataContracts.TelemetryContext"/>.
             </summary>
+            <remarks>
+            One type of objects that support <see cref="T:Microsoft.ApplicationInsights.DataContracts.TelemetryContext"/> is a telemetry source.
+            A telemetry source can supply initial property values for a <see cref="T:Microsoft.ApplicationInsights.DataContracts.TelemetryContext"/> object 
+            during its construction or generate <see cref="T:Microsoft.ApplicationInsights.Channel.ITelemetry"/> objects during its lifetime.
+            </remarks>
         </member>
-        <member name="F:Microsoft.ApplicationInsights.Extensibility.ApplicationLifecycle.provider">
-            <summary>
-            The current platform specific application lifecycle provider. We have this additional level of indirection so that we can
-            replace the provider on the fly without having to unhook all consumers of the events if provides.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.ApplicationLifecycle.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Extensibility.ApplicationLifecycle"/> class.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.ApplicationLifecycle.SetProvider(Microsoft.ApplicationInsights.Extensibility.IApplicationLifecycle)">
-            <summary>
-            Initializes the current management interface with a platform specific provider.
-            </summary>
-        </member>
-        <member name="E:Microsoft.ApplicationInsights.Extensibility.ApplicationLifecycle.Started">
-            <summary>
-            Occurs when a new instance of the application is started or an existing instance is activated.
-            </summary>
-        </member>
-        <member name="E:Microsoft.ApplicationInsights.Extensibility.ApplicationLifecycle.Stopping">
-            <summary>
-            Occurs when the application is suspending or closing.
-            </summary>
-        </member>
-        <member name="P:Microsoft.ApplicationInsights.Extensibility.ApplicationLifecycle.Service">
-            <summary>
-            Gets the singleton instance for our management object.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.ApplicationStoppingEventArgs">
-            <summary>
-            Encapsulates arguments of the <see cref="E:Microsoft.ApplicationInsights.Extensibility.IApplicationLifecycle.Stopping"/> event.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.ApplicationStoppingEventArgs.#ctor(System.Func{System.Func{System.Threading.Tasks.Task},System.Threading.Tasks.Task})">
-            <summary>
-            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Extensibility.ApplicationStoppingEventArgs"/> class with the specified runner of asynchronous methods.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.ApplicationStoppingEventArgs.Run(System.Func{System.Threading.Tasks.Task})">
-            <summary>
-            Runs the specified asynchronous method while preventing the application from exiting.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.ComponentContextInitializer">
-            <summary>
-            A telemetry context initializer that will gather component context information.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.ComponentContextInitializer.Initialize(Microsoft.ApplicationInsights.DataContracts.TelemetryContext)">
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.IContextInitializer.Initialize(Microsoft.ApplicationInsights.DataContracts.TelemetryContext)">
             <summary>
             Initializes the given <see cref="T:Microsoft.ApplicationInsights.DataContracts.TelemetryContext"/>.
-            </summary>
-            <param name="context">The telemetry context to initialize.</param>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.DeviceContextInitializer">
-            <summary>
-            A telemetry context initializer that will gather device context information.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.DeviceContextInitializer.Initialize(Microsoft.ApplicationInsights.DataContracts.TelemetryContext)">
-            <summary>
-            Initializes the given <see cref="T:Microsoft.ApplicationInsights.DataContracts.TelemetryContext"/>.
-            </summary>
-            <param name="context">The telemetry context to initialize.</param>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.FallbackDeviceContext">
-            <summary>
-            The fallback device context we will be using if we can't extract device information directly.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.IFallbackContext">
-            <summary>
-            The interface for all fallback contexts.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.IFallbackContext.Initialize">
-            <summary>
-            Initializes this instance with a set of new properties to serve as context.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.IFallbackContext.Serialize(System.Xml.Linq.XElement)">
-            <summary>
-            Serializes the current instance to the passed in root element.
-            </summary>
-            <param name="rootElement">The root element to serialize to.</param>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.IFallbackContext.Deserialize(System.Xml.Linq.XElement)">
-            <summary>
-            Deserializes the passed in root element to the current instance.
-            </summary>
-            <param name="rootElement">The root element to deserialize.</param>
-            <returns>True if deserialization was successful, false otherwise.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.FallbackDeviceContext.Initialize">
-            <summary>
-            Initializes this instance with a set of new properties to serve as context.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.FallbackDeviceContext.Serialize(System.Xml.Linq.XElement)">
-            <summary>
-            Serializes the current instance to the passed in root element.
-            </summary>
-            <param name="rootElement">The root element to serialize to.</param>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.FallbackDeviceContext.Deserialize(System.Xml.Linq.XElement)">
-            <summary>
-            Deserializes the passed in root element to the current instance.
-            </summary>
-            <param name="rootElement">The root element to deserialize.</param>
-            <returns>True if deserialization was successful, false otherwise.</returns>
-        </member>
-        <member name="P:Microsoft.ApplicationInsights.Extensibility.FallbackDeviceContext.DeviceUniqueId">
-            <summary>
-            Gets the device unique identifier.
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.IDebugOutput">
@@ -1828,6 +1414,12 @@
             <summary>
             Write the message to the VisualStudio output window.
             </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.IDebugOutput.IsLogging">
+            <summary>
+            Checks to see if logging is enabled by an attached debugger. 
+            </summary>
+            <returns>true if a debugger is attached and logging is enabled; otherwise, false.</returns>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.ComponentContext">
             <summary>
@@ -1842,12 +1434,6 @@
         <member name="P:Microsoft.ApplicationInsights.Extensibility.Implementation.ComponentContext.Version">
             <summary>
             Gets or sets the application version.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.CurrentThreadTaskScheduler">
-            <summary>
-            Runs tasks synchronously, on the current thread. 
-            From <a href="http://code.msdn.microsoft.com/Samples-for-Parallel-b4b76364/view/SourceCode"/>.
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.DeviceContext">
@@ -1926,14 +1512,15 @@
             Gets the stack frame length for only the strings in the stack frame.
             </summary>
         </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.ExceptionHandler.Start(System.Func{System.Threading.Tasks.Task})">
-            <summary>
-            Starts the <paramref name="asyncMethod"/>, catches and logs any exceptions it may throw.
-            </summary>
-        </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.Clock">
             <summary>
             A highly-accurate, precise and testable clock.
+            </summary>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.FixedSizeQueue`1">
+            <summary>
+            A light fixed size queue. If Enqueue is called and queue's limit has reached the last item will be removed.
+            This data structure is thread safe.
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.InternalContext">
@@ -1946,10 +1533,71 @@
             Gets or sets application insights SDK version.
             </summary>
         </member>
+        <member name="P:Microsoft.ApplicationInsights.Extensibility.Implementation.InternalContext.AgentVersion">
+            <summary>
+            Gets or sets application insights agent version.
+            </summary>
+        </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.IRandomNumberBatchGenerator">
             <summary>
             Interface for random number generator capable of producing 
             a batch of unsigned 64 bit random numbers.
+            </summary>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializer">
+            <summary>
+            Serializes and compress the telemetry items into a JSON string. Compression will be done using GZIP, for Windows Phone 8 compression will be disabled because there
+            is API support for it. 
+            </summary>    
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializer.Serialize(System.Collections.Generic.IEnumerable{Microsoft.ApplicationInsights.Channel.ITelemetry},System.Boolean)">
+            <summary>
+            Serializes and compress the telemetry items into a JSON string. Each JSON object is separated by a new line. 
+            </summary>
+            <param name="telemetryItems">The list of telemetry items to serialize.</param>
+            <param name="compress">Should serialization also perform compression.</param>
+            <returns>The compressed and serialized telemetry items.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializer.Serialize(Microsoft.ApplicationInsights.Channel.ITelemetry,System.Boolean)">
+            <summary>
+             Serialize and compress a telemetry item. 
+            </summary>
+            <param name="telemetryItem">A telemetry item.</param>
+            <param name="compress">Should serialization also perform compression.</param>
+            <returns>The compressed and serialized telemetry item.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializer.SerializeAsString(System.Collections.Generic.IEnumerable{Microsoft.ApplicationInsights.Channel.ITelemetry})">
+            <summary>
+            Serializes <paramref name="telemetryItems"/> into a JSON string. Each JSON object is separated by a new line. 
+            </summary>
+            <param name="telemetryItems">The list of telemetry items to serialize.</param>
+            <returns>A JSON string of all the serialized items.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializer.SerializeAsString(Microsoft.ApplicationInsights.Channel.ITelemetry)">
+            <summary>
+            Serializes a <paramref name="telemetry"/> into a JSON string. 
+            </summary>
+            <param name="telemetry">The telemetry to serialize.</param>
+            <returns>A JSON string of the serialized telemetry.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializer.CreateCompressedStream(System.IO.Stream)">
+            <summary>
+            Creates a GZIP compression stream that wraps <paramref name="stream"/>. For windows phone 8.0 it returns <paramref name="stream"/>. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializer.SeializeToStream(System.Collections.Generic.IEnumerable{Microsoft.ApplicationInsights.Channel.ITelemetry},System.IO.TextWriter)">
+            <summary>
+            Serializes <paramref name="telemetryItems"/> and write the response to <paramref name="streamWriter"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializer.SerializePerformanceCounter(Microsoft.ApplicationInsights.DataContracts.PerformanceCounterTelemetry,Microsoft.ApplicationInsights.Extensibility.Implementation.JsonWriter)">
+            <summary>
+            Serializes this object in JSON format.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializer.CompressionType">
+            <summary>
+            Gets the compression type used by the serializer. 
             </summary>
         </member>
         <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonWriter.WritePropertyName(System.String)">
@@ -1973,7 +1621,7 @@
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.OperationContext">
             <summary>
-            Encapsulates information about a user session.
+            Encapsulates information about an operation. Operation normally reflects an end to end scenario that starts from a user action (e.g. button click).  
             </summary>
         </member>
         <member name="P:Microsoft.ApplicationInsights.Extensibility.Implementation.OperationContext.Id">
@@ -2021,6 +1669,42 @@
             Gets or sets the IsFirst Session for the user.
             </summary>
         </member>
+        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TaskTimer">
+            <summary>
+            Runs a task after a certain delay and log any error.
+            </summary>
+        </member>
+        <member name="F:Microsoft.ApplicationInsights.Extensibility.Implementation.TaskTimer.InfiniteTimeSpan">
+            <summary>
+            Represents an infinite time span.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.TaskTimer.Start(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Start the task.
+            </summary>
+            <param name="elapsed">The task to run.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.TaskTimer.Cancel">
+            <summary>
+            Cancels the current task.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.TaskTimer.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Extensibility.Implementation.TaskTimer.Delay">
+            <summary>
+            Gets or sets the delay before the task starts. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Extensibility.Implementation.TaskTimer.IsStarted">
+            <summary>
+            Gets a value indicating whether value that indicates if a task has already started.
+            </summary>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.Telemetry.NormalizeInstrumentationKey(System.String)">
             <summary>
             Normalize instrumentation key by removing dashes ('-') and making string in the lowercase.
@@ -2029,22 +1713,17 @@
             as a separator between instrumentation key part and telemetry name part.
             </summary>
         </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryConfigurationFactory.#ctor">
+        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryContextExtensions">
             <summary>
-            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryConfigurationFactory"/> class.
+            Extension methods for TelemetryContext.
             </summary>
-            <remarks>
-            This constructor is protected because <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryConfigurationFactory"/> is only meant to be instantiated 
-            by the <see cref="P:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryConfigurationFactory.Instance"/> property or by tests.
-            </remarks>
         </member>
-        <member name="P:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryConfigurationFactory.Instance">
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryContextExtensions.GetInternalContext(Microsoft.ApplicationInsights.DataContracts.TelemetryContext)">
             <summary>
-            Gets or sets the default <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryConfigurationFactory"/> instance used by <see cref="T:Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration"/>.
+            Returns TelemetryContext's Internal context.
             </summary>
-            <remarks>
-            This property is a test isolation "pinch point" that allows us to test <see cref="T:Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration"/> without using reflection.
-            </remarks>
+            <param name="context">Telemetry context to get Internal context for.</param>
+            <returns>Internal context for TelemetryContext.</returns>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.CoreEventSource.Keywords">
             <summary>
@@ -2076,12 +1755,12 @@
             Subscriber to ETW Event source events, which sends data to other Senders (F5 and Portal).
             </summary>
         </member>
-        <member name="T:Microsoft.ApplicationInsights.Extensibility.ISupportConfiguration">
+        <member name="T:Microsoft.ApplicationInsights.Extensibility.ITelemetryModule">
             <summary>
             Represents an object that supports initialization from <see cref="T:Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration"/>.
             </summary>
         </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISupportConfiguration.Initialize(Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration)">
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ITelemetryModule.Initialize(Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration)">
             <summary>
             Initialize method is called after all configuration properties have been loaded from the configuration.
             </summary>
@@ -2248,6 +1927,11 @@
             <remarks>
             Acquisition date is automatically supplied in default Application Insights configuration.
             </remarks>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Extensibility.Implementation.UserContext.StoreRegion">
+            <summary>
+            Gets or sets the store region of an application-defined account associated with the user.
+            </summary>
         </member>
         <member name="F:Microsoft.ApplicationInsights.Extensibility.Implementation.WeakConcurrentRandom.random">
             <summary>
@@ -2449,18 +2133,6 @@
             the ApplicationInsights.config file located in the application directory. 
             </remarks>
         </member>
-        <member name="P:Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration.TelemetryModules">
-            <summary>
-            Gets the list of modules that automatically generate application telemetry.
-            </summary>
-            <remarks>
-            Telemetry modules automatically send telemetry describing the application to Application Insights. For example, a telemetry 
-            module can handle application exception events and automatically send <see cref="T:Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry"/> you can see on the 
-            Application Insights portal.         
-            The default list of telemetry modules is provided by the Application Insights NuGet packages and loaded from 
-            the ApplicationInsights.config file located in the application directory. 
-            </remarks>
-        </member>
         <member name="P:Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration.TelemetryChannel">
             <summary>
             Gets or sets the telemetry channel.
@@ -2477,6 +2149,26 @@
             Populates <see cref="P:Microsoft.ApplicationInsights.Channel.ITelemetry.Sequence"/> with unique ID and sequential number.
             </summary>
         </member>
+        <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryModules">
+            <summary>
+            This API supports the AI Framework infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryModules.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryModules"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryModules.Instance">
+            <summary>
+            Gets the TelemetryModules collection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryModules.Modules">
+            <summary>
+            Gets the telemetry modules collection.
+            </summary>
+        </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.TimestampPropertyInitializer">
             <summary>
             An <see cref="T:Microsoft.ApplicationInsights.Extensibility.ITelemetryInitializer"/> that sets <see cref="P:Microsoft.ApplicationInsights.Channel.ITelemetry.Timestamp"/> to <see cref="P:System.DateTimeOffset.Now"/>.
@@ -2485,66 +2177,6 @@
         <member name="M:Microsoft.ApplicationInsights.Extensibility.TimestampPropertyInitializer.Initialize(Microsoft.ApplicationInsights.Channel.ITelemetry)">
             <summary>
             Sets <see cref="P:Microsoft.ApplicationInsights.Channel.ITelemetry.Timestamp"/> to <see cref="P:System.DateTimeOffset.Now"/>.
-            </summary>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.Channel.Transmission">
-            <summary>
-            Implements an asynchronous transmission of data to an HTTP POST endpoint.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Channel.Transmission.#ctor(System.Uri,System.Byte[],System.String,System.String,System.TimeSpan)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Channel.Transmission"/> class.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Channel.Transmission.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Channel.Transmission"/> class.
-            </summary>
-            <remarks>
-            This constructor is defined for testing only.
-            </remarks>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Channel.Transmission.LoadAsync(System.IO.Stream)">
-            <summary>
-            Loads a new transmission from the specified <paramref name="stream"/>.
-            </summary>
-            <returns>Return transmission loaded from file; return null if the file is corrupted.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Channel.Transmission.SaveAsync(System.IO.Stream)">
-            <summary>
-            Saves the transmission to the specified <paramref name="stream"/>.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Channel.Transmission.SendAsync">
-            <summary>
-            Executes the request that the current transmission represents.
-            </summary>
-            <returns>The task to await.</returns>
-        </member>
-        <member name="P:Microsoft.ApplicationInsights.Channel.Transmission.EndpointAddress">
-            <summary>
-            Gets the address of the endpoint to which transmission will be sent.
-            </summary>
-        </member>
-        <member name="P:Microsoft.ApplicationInsights.Channel.Transmission.Content">
-            <summary>
-            Gets a content of the transmission.
-            </summary>
-        </member>
-        <member name="P:Microsoft.ApplicationInsights.Channel.Transmission.ContentType">
-            <summary>
-            Gets a content type of the transmission.
-            </summary>
-        </member>
-        <member name="P:Microsoft.ApplicationInsights.Channel.Transmission.ContentEncoding">
-            <summary>
-            Gets the encoding method of the transmission.
-            </summary>
-        </member>
-        <member name="P:Microsoft.ApplicationInsights.Channel.Transmission.Timeout">
-            <summary>
-            Gets a timeout value for the transmission.
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.TelemetryClient">
@@ -2568,18 +2200,13 @@
             Check to determine if the tracking is enabled.
             </summary>
         </member>
-        <member name="M:Microsoft.ApplicationInsights.TelemetryClient.TrackEvent(System.String)">
-            <summary>
-            Send an <see cref="T:Microsoft.ApplicationInsights.DataContracts.EventTelemetry"/> for display in Diagnostic Search and aggregation in Metrics Explorer.
-            </summary>
-            <param name="eventName">A name for the event.</param>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.TelemetryClient.TrackEvent(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+        <member name="M:Microsoft.ApplicationInsights.TelemetryClient.TrackEvent(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Double})">
             <summary>
             Send an <see cref="T:Microsoft.ApplicationInsights.DataContracts.EventTelemetry"/> for display in Diagnostic Search and aggregation in Metrics Explorer.
             </summary>
             <param name="eventName">A name for the event.</param>
             <param name="properties">Named string values you can use to search and classify events.</param>
+            <param name="metrics">Measurements associated with this event.</param>
         </member>
         <member name="M:Microsoft.ApplicationInsights.TelemetryClient.TrackEvent(Microsoft.ApplicationInsights.DataContracts.EventTelemetry)">
             <summary>
@@ -2600,18 +2227,26 @@
             <param name="message">Message to display.</param>
             <param name="severityLevel">Trace severity level.</param>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.TelemetryClient.TrackTrace(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Send a trace message for display in Diagnostic Search.
+            </summary>
+            <param name="message">Message to display.</param>
+            <param name="properties">Named string values you can use to search and classify events.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.TelemetryClient.TrackTrace(System.String,Microsoft.ApplicationInsights.DataContracts.SeverityLevel,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Send a trace message for display in Diagnostic Search.
+            </summary>
+            <param name="message">Message to display.</param>
+            <param name="severityLevel">Trace severity level.</param>
+            <param name="properties">Named string values you can use to search and classify events.</param>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.TelemetryClient.TrackTrace(Microsoft.ApplicationInsights.DataContracts.TraceTelemetry)">
             <summary>
             Send a trace message for display in Diagnostic Search.
             </summary>
             <param name="telemetry">Message with optional properties.</param>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.TelemetryClient.TrackMetric(System.String,System.Double)">
-            <summary>
-            Send a <see cref="T:Microsoft.ApplicationInsights.DataContracts.MetricTelemetry"/> for aggregation in Metric Explorer.
-            </summary>
-            <param name="name">Metric name.</param>
-            <param name="value">Metric value.</param>
         </member>
         <member name="M:Microsoft.ApplicationInsights.TelemetryClient.TrackMetric(System.String,System.Double,System.Collections.Generic.IDictionary{System.String,System.String})">
             <summary>
@@ -2626,15 +2261,32 @@
             Send a <see cref="T:Microsoft.ApplicationInsights.DataContracts.MetricTelemetry"/> for aggregation in Metric Explorer.
             </summary>
         </member>
-        <member name="M:Microsoft.ApplicationInsights.TelemetryClient.TrackException(System.Exception)">
+        <member name="M:Microsoft.ApplicationInsights.TelemetryClient.TrackException(System.Exception,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Double})">
             <summary>
             Send an <see cref="T:Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry"/> for display in Diagnostic Search.
             </summary>
             <param name="exception">The exception to log.</param>
+            <param name="properties">Named string values you can use to classify and search for this exception.</param>
+            <param name="metrics">Additional values associated with this exception.</param>
         </member>
         <member name="M:Microsoft.ApplicationInsights.TelemetryClient.TrackException(Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry)">
             <summary>
             Send an <see cref="T:Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry"/> for display in Diagnostic Search.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.TelemetryClient.TrackDependency(System.String,System.String,System.DateTimeOffset,System.TimeSpan,System.Boolean)">
+            <summary>
+            Send information about external dependency call in the application.
+            </summary>
+            <param name="dependencyName">External dependency name.</param>
+            <param name="commandName">Dependency call command name.</param>
+            <param name="startTime">The time when the dependency was called.</param>
+            <param name="duration">The time taken by the external dependency to handle the call.</param>
+            <param name="success">True if the dependency call was handled successfully.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.TelemetryClient.TrackDependency(Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry)">
+            <summary>
+            Send information about external dependency call in the application.
             </summary>
         </member>
         <member name="M:Microsoft.ApplicationInsights.TelemetryClient.Track(Microsoft.ApplicationInsights.Channel.ITelemetry)">
@@ -2658,7 +2310,7 @@
             Send information about a request handled by the application.
             </summary>
             <param name="name">The request name.</param>
-            <param name="timestamp">The time when the page was requested.</param>
+            <param name="startTime">The time when the page was requested.</param>
             <param name="duration">The time taken by the application to handle the request.</param>
             <param name="responseCode">The response status code.</param>
             <param name="success">True if the request was handled successfully by the application.</param>
@@ -2667,14 +2319,6 @@
             <summary>
             Send information about a request handled by the application.
             </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.TelemetryClient.TrackSessionState(Microsoft.ApplicationInsights.DataContracts.SessionState)">
-            <summary>
-            Sends the specified state of a user session to Application Insights.
-            </summary>
-            <param name="sessionState">
-            A <see cref="T:Microsoft.ApplicationInsights.DataContracts.SessionState"/> value indicating the state of a user session.
-            </param>
         </member>
         <member name="M:Microsoft.ApplicationInsights.TelemetryClient.Flush">
             <summary>
@@ -2686,9 +2330,9 @@
             Gets the current context that will be used to augment telemetry you send.
             </summary>
         </member>
-        <member name="P:Microsoft.ApplicationInsights.TelemetryClient.Properties">
+        <member name="P:Microsoft.ApplicationInsights.TelemetryClient.InstrumentationKey">
             <summary>
-            Gets a dictionary of application-defined property names and values that can be inherited by all telemetry tracked through this <see cref="T:Microsoft.ApplicationInsights.TelemetryClient"/>.
+            Gets or sets the default instrumentation key for all <see cref="T:Microsoft.ApplicationInsights.Channel.ITelemetry"/> objects logged in this <see cref="T:Microsoft.ApplicationInsights.TelemetryClient"/>.
             </summary>
         </member>
         <member name="P:Microsoft.ApplicationInsights.TelemetryClient.Channel">

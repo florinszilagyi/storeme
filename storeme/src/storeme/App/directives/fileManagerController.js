@@ -83,16 +83,6 @@
             });
         }
 
-        //$scope.uploadFiles = function () {
-        //    $scope.fileUploader.upload($scope.uploadFileList, $scope.fileNavigator.currentPath, $scope.accessCode).success(function () {
-        //        $scope.fileNavigator.refresh();
-        //        $('#uploadfile').modal('hide');
-        //    }).error(function (data) {
-        //        var errorMsg = data.result && data.result.error || 'Error uploading files';
-        //        $scope.temp.error = errorMsg;
-        //    });
-        //};
-
         $scope.getQueryParam = function (param) {
             var found;
             window.location.search.substr(1).split("&").forEach(function (item) {

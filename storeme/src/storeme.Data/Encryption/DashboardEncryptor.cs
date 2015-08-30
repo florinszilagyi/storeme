@@ -61,7 +61,7 @@ namespace storeme.Data.Encryption
         /// <param name="fileData">The file data.</param>
         /// <param name="mime">The MIME.</param>
         /// <returns></returns>
-        public DashboardItem CreateEncryptedItem(string fileName, string path, byte[] fileData = null, string mime = "")
+        public DashboardItem Encrypt(string fileName, string path, byte[] fileData = null, string mime = "")
         {
             path = path ?? string.Empty;
             var item = new DashboardItem();

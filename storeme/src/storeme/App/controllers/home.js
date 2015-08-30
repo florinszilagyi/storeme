@@ -38,8 +38,7 @@
             vm.isLoading = true;
             common.$http.post('dashboard/exists', { accessCode: accessCode }).then(function (result) {
                 if (result.data.exists) {
-                    common.$cookies.put('accessCode', accessCode);
-                    common.$location.path('/dashboard'.format(accessCode));
+                    vm.accessDashboard(accessCode);
                 } else {
                     common.toastr.error('Dashboard does not exist.');
                 }
@@ -52,10 +51,16 @@
             });
         }
 
+        vm.accessDashboard = function (accessCode) {
+            common.$rootScope.$broadcast('app.login');
+            common.$cookies.put('accessCode', accessCode);
+            common.$location.path('/dashboard'.format(accessCode));
+        }
+
         vm.newDashboard = function () {
             vm.isLoading = true;
             common.$http.post('dashboard/new').then(function (result) {
-                vm.openDashboard(result.data.accessCode);
+                vm.accessDashboard(result.data.accessCode);
                 vm.isLoading = false;
             }, function (result) {
                 vm.isLoading = false;

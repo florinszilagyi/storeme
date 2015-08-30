@@ -30,7 +30,7 @@ namespace storeme.Data.Encryption
         /// <param name="item">The item.</param>
         /// <param name="withFileContent">if set to <c>true</c> [with file content].</param>
         /// <returns></returns>
-        public DashboardItem DecryptItem(DashboardItem item, bool withFileContent = false)
+        public DashboardItem Decrypt(DashboardItem item, bool withFileContent = false)
         {
             var newItem = new DashboardItem();
             newItem.Name = EncryptionHelper.SymmetricDecryptInBase64(item.Name, this.key);

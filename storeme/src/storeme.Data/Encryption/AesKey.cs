@@ -69,7 +69,7 @@ namespace storeme.Data.Encryption
         /// <value>
         ///     The expected length of the key.
         /// </value>
-        private static int ExpectedKeyLength => 32;
+        private static int ExpectedKeyLength => 16;
 
         /// <summary>
         /// Gets or sets the initialization vector.

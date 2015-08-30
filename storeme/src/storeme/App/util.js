@@ -30,8 +30,8 @@
 
     $(window.document).on('contextmenu', menuSelectors, function (e) {
         $("#context-menu").hide().css({
-            left: e.pageX,
-            top: e.pageY
+            left: e.pageX -90,
+            top: e.pageY -80
         }).show();
         e.preventDefault();
     });

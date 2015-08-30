@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using MongoDB.Bson;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace storeme.Data.Model
 {
     public class Dashboard
     {
-        public ObjectId Id { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
         /// <summary>
         /// Gets or sets the key.
@@ -14,6 +17,8 @@ namespace storeme.Data.Model
         /// <value>
         /// The key.
         /// </value>
+        [Index]
+        [MaxLength(256)]
         public string Key { get; set; }
 
         /// <summary>
@@ -22,6 +27,7 @@ namespace storeme.Data.Model
         /// <value>
         /// The salt.
         /// </value>
+        [MaxLength(256)]
         public string Salt { get; set; }
 
         /// <summary>
@@ -30,6 +36,14 @@ namespace storeme.Data.Model
         /// <value>
         /// The root folder.
         /// </value>
-        public List<DashboardItem> DashboardItems { get; set; } = new List<DashboardItem>();
+        public virtual ICollection<DashboardItem> DashboardItems { get; set; } = new List<DashboardItem>();
+
+        /// <summary>
+        /// Gets or sets the created.
+        /// </summary>
+        /// <value>
+        /// The created.
+        /// </value>
+        public DateTime Created { get; set; } = DateTime.Now.Date;
     }
 }
