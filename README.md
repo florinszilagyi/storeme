@@ -7,6 +7,8 @@ ASP.NET MVC
 
 AngularJS
 
+Entity Framework 6.0 CF & MongoDB Driver
+
 Plugins:
 * [jQuery](https://jquery.com/)
 * [Bootstrap](https://github.com/twbs/bootstrap)
